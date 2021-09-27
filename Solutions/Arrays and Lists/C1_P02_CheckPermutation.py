@@ -5,28 +5,6 @@ from collections import Counter
 
 
 """"""
-def check_permutation_by_sort(s1, s2):
-    if len(s1) != len(s2):
-        return False
-    s1, s2 = sorted(s1), sorted(s2)
-    for i in range(len(s1)):
-        if s1[i] != s2[i]:
-            return False
-    return True
-
-
-def check_permutation_by_count(str1, str2):
-    if len(str1) != len(str2):
-        return False
-    counter = [0] * 256
-    for c in str1:
-        counter[ord(c)] += 1
-    for c in str2:
-        if counter[ord(c)] == 0:
-            return False
-        counter[ord(c)] -= 1
-    return True
-
 
 def check_permutation_pythonista(str1, str2):
     if len(str1) != len(str2):
@@ -51,11 +29,7 @@ class Test(unittest.TestCase):
         ("aaab", "bbba", False),
     )
 
-    testable_functions = [
-        check_permutation_by_sort,
-        check_permutation_by_count,
-        check_permutation_pythonista,
-    ]
+    testable_functions = [check_permutation_pythonista]
 
     def test_cp(self):
         # true check
